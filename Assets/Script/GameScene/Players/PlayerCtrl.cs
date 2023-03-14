@@ -92,8 +92,8 @@ public class PlayerCtrl : MonoBehaviour
 
         if (IsPlay == true)
         {
-            h = Input.GetAxis("Horizontal");
-            v = Input.GetAxis("Vertical");
+            h = Input.GetAxisRaw("Horizontal");
+            v = Input.GetAxisRaw("Vertical");
 
             if (h != 0.0f || v != 0.0f)
             {

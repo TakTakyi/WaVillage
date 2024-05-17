@@ -10,6 +10,7 @@ public class TitleMgr : MonoBehaviour
     public RawImage mScreen;
     public VideoPlayer mVideoPlayer;
     public Button GoLobbyBtn;
+    public Slider volumeSlider;
     
     float VideoLength;
     float m_Time;
@@ -26,8 +27,11 @@ public class TitleMgr : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //소리 기본값
+        volumeSlider.value = 0.5f;
         VideoLength = (float)mVideoPlayer.length;
 
+        //비디오 스킵 버튼
         if (GoLobbyBtn != null)
             GoLobbyBtn.onClick.AddListener(() =>
             {
@@ -46,6 +50,9 @@ public class TitleMgr : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //비디오 플레이어 볼륨 조절 코드
+        mVideoPlayer.SetDirectAudioVolume(0, volumeSlider.value);
+
         m_Time += Time.deltaTime;
         if (VideoLength <= m_Time)
         {
